@@ -126,13 +126,13 @@ with open(file, 'r') as payloads:
 .
 .
 .
-[-] root: fernanda
-[-] root: westlife
-[-] root: blondie
-[-] root: sasuke
-[-] root: smiley
-[-] root: jackson
-[+] root: simple
+* [-] root: fernanda
+* [-] root: westlife
+* [-] root: blondie
+* [-] root: sasuke
+* [-] root: smiley
+* [-] root: jackson
+* [+] root: simple
 
 ## El password es 'simple' para el usuario 'root'
 
